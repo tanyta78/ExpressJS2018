@@ -1,0 +1,124 @@
+h1 {
+    color: blueviolet
+}
+
+h2:first-letter {
+    text-transform:capitalize;
+}
+
+body {
+    margin: 5px;
+    padding: 0;
+    background: #ccc;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2em;
+}
+
+.nav ul {
+    list-style: none;
+    background-color: rgb(182, 74, 192);
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.nav li {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2em;
+    line-height: 40px;
+    height: 40px;
+    border-bottom: 2px solid rgb(7, 7, 7);
+    display: inline-block;
+    padding: 1%;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    transition: .3s background-color;
+}
+
+.nav a:hover {
+    background-color: rgb(87, 21, 87);
+}
+
+.nav a.active {
+    background-color: #fff;
+    color: #444;
+    cursor: default;
+}
+
+label {
+    float: left;
+    width: 10em;
+    margin-right: 1em;
+    text-align: right;
+    margin-top: 6px;
+    /* Add a top margin */
+    margin-bottom: 16px;
+    /* Bottom margin */
+}
+
+/* Style inputs with type="text"*/
+
+input[type=text] {
+    width: 300px;
+    height: 30px;
+    padding: 12px;
+    /* Some padding */
+    border: 1px solid #ccc;
+    /* Gray border */
+    border-radius: 4px;
+    /* Rounded borders */
+    box-sizing: border-box;
+    /* Make sure that padding and width stays in place */
+    margin-top: 6px;
+    /* Add a top margin */
+    margin-bottom: 16px;
+    /* Bottom margin */
+}
+
+/* Style the submit button with a specific background color etc */
+
+input[type=submit] {
+    background-color: blueviolet;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    margin-left: 20px;
+    margin-top: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* When moving the mouse over the submit button, add a darker green color */
+
+input[type=submit]:hover {
+    background-color: violet;
+}
+
+/* Add a background color and some padding around the form */
+
+.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.img{
+    width: 100%; 
+    height: 100%;
+    display: block;
+}
+
+.image{
+    display: inline-block;
+    margin: 5px 5px;
+    width: 320px;
+    height: 250px;
+}
+
+footer {
+    text-align: center;
+}

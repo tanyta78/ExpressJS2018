@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Web Server</title>
+  <link rel="icon" href="/content/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" type="text/css" href="/content/site.css">
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <ul>
+        <li><a href="/">Home Page</a></li>
+        <li><a href="/images/add">Add Image</a></li>
+        <li><a href="/images/all">All Images</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h1 class="head-title">Add Image</h1>
+    <form class="form center-form" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" class="input-field" required/>
+      </div>
+
+      <div class="form-group">
+        <label for="upload">Image URL</label>
+        <input id="upload" name="upload" type="file" class="input-field" accept="image/jpeg" required/>
+        <!-- <input id="imageUrl" name="imageUrl" type="text" class="input-field" required/> -->
+      </div>
+
+      <div class="form-group">
+        <label for="private">Make private</label>
+        <input id="private" name="private" type="checkbox" class="input-field" />
+      </div>
+
+      <div class="form-group">
+        <input class="btn form-btn" type="submit" class="btn" value="Add">
+      </div>
+    </form>
+    <input type="button" value="Back" onclick="window.history.back()" /> 
+
+  </main>
+  <footer>
+    <p>&copy;Images Review Web Server 2018</p>
+  </footer>
+</body>
+</html>

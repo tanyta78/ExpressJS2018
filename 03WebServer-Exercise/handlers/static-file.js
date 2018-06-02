@@ -4,9 +4,8 @@ function getContentType (url) {
   const mimes = {
     'js': 'application/javascript',
     'css': 'text/css',
-    'json': 'application/json',
-    'jpeg': 'image/jpeg',
-    'pdf': 'application/pdf',
+    'png': 'image/png',
+    'jpg': 'image/jpg',
     'html': 'text/html'
   }
 

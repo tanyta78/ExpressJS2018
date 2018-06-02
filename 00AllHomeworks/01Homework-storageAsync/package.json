@@ -1,0 +1,12 @@
+{
+  "name": "01Homework-storageAsync",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "TM",
+  "license": "MIT"
+}

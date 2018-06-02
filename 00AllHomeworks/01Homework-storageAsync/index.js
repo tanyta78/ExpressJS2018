@@ -16,9 +16,9 @@ storage.delete('first')
 
 storage.clear()
 
-storage.put('first', 'some value')
-storage.put('second', true)
-storage.put('third', 1)
+storage.put('first', 'first value')
+storage.put('second', 'second value')
+storage.put('third', 'third value')
 
 // storage async without promise
 storage.save(() => {
@@ -32,12 +32,12 @@ storage.save(() => {
 
 // storage with promise
 storage
-  .save()
+  .saveProm()
   .then(() => {
     storage.clear()
 
     storage
-      .load()
+      .loadProm()
       .then(() => {
         let afterLoadValue = storage.get('second')
         console.log(afterLoadValue)

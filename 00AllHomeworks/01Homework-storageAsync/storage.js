@@ -1,6 +1,6 @@
 let fs = require('fs')
 let data = {}
-let dataFile = 'storage.dat'
+let dataFile = 'storage.json'
 
 let validateKeyAsString = (key) => {
   if (typeof key !== 'string') {
@@ -32,11 +32,11 @@ let get = (key) => {
 }
 
 let getAll = () => {
-  if (data.length === 0) {
+  if (Object.keys(data).length === 0) {
     throw new Error('Storage is empty!')
   }
 
-  return JSON.stringify(data)
+  return data
 }
 
 let update = (key, value) => {
@@ -54,11 +54,6 @@ let deleteItem = (key) => {
 
 let clear = () => {
   data = {}
-}
-
-let save = () => {
-  let dataAsString = JSON.stringify(data)
-  fs.writeFileSync(dataFile, dataAsString)
 }
 
 // async save
@@ -87,11 +82,6 @@ let saveWithPromise = (callback) => {
       resolve()
     })
   })
-}
-
-let load = () => {
-  let dataAsString = fs.readFileSync(dataFile, 'utf8')
-  data = JSON.parse(dataAsString)
 }
 
 // async load
@@ -128,8 +118,6 @@ module.exports = {
   clear: clear,
   save: saveAsync,
   load: loadAsync,
-  saveSync: save,
-  loadSync: load,
   saveProm: saveWithPromise,
   loadProm: loadWithPromise
 }

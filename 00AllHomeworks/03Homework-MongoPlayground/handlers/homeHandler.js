@@ -16,13 +16,14 @@ module.exports = (req, res) => {
 
       Tag.find({}).then(tags => {
         for (let tag of tags) {
-          dispalyTags += `<div class='tag' id="${tag._id}">${tag.tagName}</div>`
+          dispalyTags += `<div class='tag' id="${tag._id}">${tag.name}</div>`
         }
         data = data
           .toString()
           .replace(`<div class='replaceMe'></div>`, dispalyTags)
         res.end(data)
       })
+      
     })
   } else {
     return true

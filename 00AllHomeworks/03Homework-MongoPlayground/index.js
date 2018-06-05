@@ -4,10 +4,10 @@ const qs = require('querystring')
 const port = process.env.PORT || 5000
 const handlers = require('./handlers/handlerBlender')
 
-require('./config/db')
-
-http
-  .createServer((req, res) => {
+require('./config/db').then(()=>{
+  console.log('Database ready!');
+  
+  http.createServer((req, res) => {
     req.pathname = url.parse(req.url).pathname
     req.pathquery = qs.parse(url.parse(req.url).query)
     for (let handler of handlers) {
@@ -15,5 +15,10 @@ http
         break
       }
     }
-  })
-  .listen(port)
+  }).listen(port,()=>{
+      console.log(`Listening on port ${port}`);
+      
+  } )
+}).catch(err=>{
+  throw err
+})

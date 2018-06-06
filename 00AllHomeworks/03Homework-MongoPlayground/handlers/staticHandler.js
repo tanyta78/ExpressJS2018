@@ -18,8 +18,7 @@ let fileType = dataString => {
 let favHandler = (req, res) => {
   fs.readFile('./public/images/favicon.ico', (err, data) => {
     if (err) {
-      console.log(err)
-      return
+      res.displayError(err)
     }
 
     res.writeHead(200, {
@@ -35,8 +34,7 @@ let resData = (req, res) => {
 
   fs.readFile('.' + req.pathname, (err, data) => {
     if (err) {
-      console.log(err)
-      return
+      res.displayError(err)
     }
     res.writeHead(200, {
       'Content-Type': fileType(req.pathname)

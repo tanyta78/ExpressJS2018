@@ -33,11 +33,7 @@ let addImage = (req, res)=>{
       })
       res.end()
    }).catch(err=>{
-      res.writeHead(500,{
-        'Content-Type':'text/plain'
-      })
-      res.write('500 Server Error')
-      res.end()
+    res.displayError(err)
    })
    
  })
@@ -50,11 +46,7 @@ let deleteImg = (req, res)=>{
     })
     res.end()
   }).catch(err=>{
-    res.writeHead(500,{
-      'Content-Type':'text/plain'
-    })
-    res.write('500 Server Error')
-    res.end()
+    res.displayError(err)
   })
 }
 

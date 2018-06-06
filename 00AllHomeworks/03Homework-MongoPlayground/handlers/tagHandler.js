@@ -61,10 +61,7 @@ module.exports = (req, res) => {
         })
         res.end()
       }).catch(err=>{
-        res.writeHead(500,{
-          'Content-Type':'text/plain'
-        })
-        res.write('500 Server error!')
+       res.displayError(err)
       })
      
     })

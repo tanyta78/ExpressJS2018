@@ -10,6 +10,13 @@ require('./config/db').then(()=>{
   http.createServer((req, res) => {
     req.pathname = url.parse(req.url).pathname
     req.pathquery = qs.parse(url.parse(req.url).query)
+    res.displayError = (err)=>{ 
+      res.writeHead(500,{
+      'Content-Type':'text/plain'
+      })
+      res.write('500 Server error!')
+      res.end()
+    }
     for (let handler of handlers) {
       if (!handler(req, res)) {
         break

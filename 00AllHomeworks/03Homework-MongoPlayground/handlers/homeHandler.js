@@ -6,8 +6,7 @@ module.exports = (req, res) => {
   if (req.pathname === '/' && req.method === 'GET') {
     fs.readFile('./views/index.html', (err, data) => {
       if (err) {
-        console.log(err)
-        return
+        res.displayError(err)
       }
       res.writeHead(200, {
         'Content-Type': 'text/html'
@@ -21,6 +20,7 @@ module.exports = (req, res) => {
         data = data
           .toString()
           .replace(`<div class='replaceMe'></div>`, dispalyTags)
+          
         res.end(data)
       })
       

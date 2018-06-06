@@ -1,5 +1,5 @@
 {
-  "name": "03Homework-MemeDB",
+  "name": "06Intro-to-ExpressJS",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,10 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "tanyta78",
-  "license": "MIT",
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "formidable": "^1.2.1",
-    "shortid": "^2.2.8"
+    "express": "4.16.3"
   }
 }

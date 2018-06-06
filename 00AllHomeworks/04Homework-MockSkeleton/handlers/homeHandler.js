@@ -1,6 +1,8 @@
 const fs = require('fs')
 const filePath = './views/home.html'
 
+
+
 module.exports = (req, res) => {
   if (req.pathname === '/' && req.method === 'GET') {
     fs.readFile(filePath, (err, data) => {

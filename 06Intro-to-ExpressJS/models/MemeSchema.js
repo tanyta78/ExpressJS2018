@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 
 let memeSchema = new mongoose.Schema({
-	memeName:{type:String, required:true},
-	title:{type:String, required:true},
+	memeTitle:{type:String, required:true},
+	genreSelect:{type:String, required:true},
 	dateOfCreation:{type:Date, default:Date.now()},
-	description:{type:String},
-
+	status:{type:String},
+	memeDescription:{type:String},
+	memePath:{type:String, required:true}
 });
 
 module.exports=mongoose.model('Meme',memeSchema);

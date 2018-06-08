@@ -2,8 +2,8 @@
 <div class="container">
     {{#each memesCollection}}
     <div class="meme">
-        <a href="/memes/getDetails?id=${{id}}">
-            <img class="memePoster" src="${{url}}" />
+        <a href="/memes/getDetails?id={{id}}">
+            <img class="memePoster" src="{{memePath}}" />
         </a>
     </div>
     {{else}}

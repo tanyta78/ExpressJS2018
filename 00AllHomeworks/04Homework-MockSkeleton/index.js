@@ -4,6 +4,7 @@ const fileUploader = require('express-fileupload');
 
 const homeModule = require('./modules/homeModule');
 const memeModule = require('./modules/memeModule');
+const apiModule = require('./modules/apiModule');
 
 const port = 2323;
 
@@ -15,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true}));
 
 app.use('/',homeModule);
 app.use('/memes',memeModule);
+app.use('/api',apiModule);
 
 require('./config/dbConfig')
 	.then(() => {

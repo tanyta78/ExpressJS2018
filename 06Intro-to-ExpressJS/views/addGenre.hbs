@@ -1,0 +1,16 @@
+<h1>Add New Genre</h1>
+<div class="container">
+    <form action="/memes/addGenre" method="POST" enctype=multipart/form-data>
+        <label for="genreName">Title</label>
+        <input type="text" id="genreName" name="genreName" placeholder="The title of the genre">
+
+        <input type="submit" value="Submit">
+
+    </form>
+</div>
+
+{{#if status}}
+<div id="successesBox">
+    <h2 id="successMsg">Genre added</h2>
+</div>
+{{/if}}

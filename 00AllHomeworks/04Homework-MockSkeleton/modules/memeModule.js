@@ -81,8 +81,10 @@ let viewAddMeme = (req, res, status = null) => {
 			.getAll()
 			.then(genres=>{
 				let exitString = '';
+				console.log(genres);
+				
 				for (let genre of genres) {
-					exitString += memeTemplates.genreOption(genre._id,genre.title);
+					exitString += memeTemplates.genreOption(genre.id,genre.title);
 				}
 
 				if (status === 'err') {
@@ -104,7 +106,7 @@ let viewAddMeme = (req, res, status = null) => {
 				defaultResponse(
 					data
 						.toString()
-						.replace(placeholder, exitString),
+						.replace('<div id="replaceMe2">{{replaceMe2}}</div>', exitString),
 					res
 				);
 			});
@@ -266,7 +268,7 @@ let searchForMeme = (req, res) => {
 					let responseString = '';
 					for (let meme of sorted) {
 						responseString += `<div class="meme">
-					<a href="/getDetails?id=${meme.id}">
+					<a href="/memes/getDetails?id=${meme.id}">
 					<img class="memePoster" src="${meme.memeSrc}"/>          
 					</div>`;
 					}

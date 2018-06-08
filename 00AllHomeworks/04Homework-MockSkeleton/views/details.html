@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="/public/css/main.css" />
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 </head>
 
 <body>
@@ -22,6 +23,22 @@
         </div>
     </header>
     <div id="replaceMe">{{replaceMe}}</div>
+
+    <!-- <script>
+        let $deleteButton = $('#delete');
+        $deleteButton.on('click', () => {
+            let memeId = $deleteButton.attr('data-meme-id');
+            $.post('/api/memes/delete/' + memeId)
+                .then(data => {
+                    window.location.pathname = data.location;
+                })
+                .catch(err => {
+                    $('.content')
+                        .first()
+                        .append($('<h1>').text(err));
+                })
+        })
+    </script> -->
 </body>
 
 </html>

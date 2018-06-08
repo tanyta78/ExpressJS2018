@@ -14,18 +14,18 @@
                 <a href="/" class="logo"><img class="logo" src="/public/images/nodeLogo.png" alt="nodeLogo"></a>
                 <input type="checkbox" id="nav" /><label for="nav"></label>
                 <ul>
-                    <li><a href="/addMeme">Add Meme</a></li>
-                    <li><a href="/viewAllMemes">View All Memes</a></li>
-                    <li><a href="/searchMeme">Search</a></li>                    
+                    <li><a href="/memes/addMeme">Add Meme</a></li>
+                    <li><a href="/memes/viewAllMemes">View All Memes</a></li>
+                    <li><a href="/memes/searchMeme">Search</a></li>                    
                 </ul>
             </nav>
         </div>
     </header>
-    <h1>Add New Movie</h1>
+    <h1>Add New Genre</h1>
     <div class="container">
-        <form action="/aaddGenre" enctype=multipart/form-data>
+        <form action="/memes/addGenre" enctype=multipart/form-data>
             <label for="movieTitle">Title</label>
-            <input type="text" id="movieTitle" name="memeTitle" placeholder="The title of the movie">
+            <input type="text" id="movieTitle" name="memeTitle" placeholder="The title of the genre">
 
             <input type="submit" value="Submit">
 

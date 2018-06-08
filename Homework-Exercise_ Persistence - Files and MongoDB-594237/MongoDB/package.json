@@ -1,0 +1,12 @@
+{
+  "name": "MongoDB",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "formidable": "^1.2.1",
+    "mongoose": "^5.0.17"
+  }
+}

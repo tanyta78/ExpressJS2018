@@ -1,0 +1,28 @@
+<h1>Search Memes</h1>
+<div class="container">
+  <form action="/memes/searchMeme" enctype=multipart/form-data method="POST">
+    <label for="memeTitle">Title</label>
+    <input type="text" id="memeTitle" name="memeTitle" placeholder="The title of the meme">
+
+    <select name='genreSelect' id="genreSelect">
+      <option value="all">All</option>
+      {{#each tags}}
+      <option value="{{this.genreName}}">{{this.genreName}}</option>
+      {{else}}
+      <option value="no genres">No Genres</option>
+      {{/each}}
+    </select>
+    <input type="submit" value="Submit">
+
+  </form>
+  <h2>Here are your memes for criteria</h2>
+   {{#each resultMemes}}
+    <div class="meme">
+        <a href="/memes/getDetails/{{id}}">
+            <img class="memePoster" src="{{memePath}}" />
+        </a>
+    </div>
+    {{else}}
+    <div>No memes in database for searched criteria!</div>
+    {{/each}}
+</div>

@@ -1,0 +1,17 @@
+<h1> Here are your books</h1>
+<div class="container">
+    {{#each booksCollection}}
+    <div class="book">
+        <a href="/books/getDetails/{{id}}">
+            <img class="bookPoster" src="{{bookPoster}}" />
+        </a>
+    </div>
+    {{else}}
+    <div>No books in database!</div>
+    {{/each}} 
+    {{!--
+    <a href="#">
+        <img class="bookPoster" src="/public/images/{{shortid}}.png" />
+    </a> --}}
+
+</div>

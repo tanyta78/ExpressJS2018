@@ -1,59 +1,31 @@
-const url = require('url');
-const fs = require('fs');
-const path = require('path');
-const qs = require('querystring');
-const multiparty = require('multiparty');
-const shortid = require('shortid');
 const Category = require('../models/Category');
 
-/**
- * 
- * @param {HTTP.ClientRequest} req 
- * @param {HTTP.ClientResponse} res 
- */
+module.exports.addGet = (req, res) => {
+	res.render('category/add');
+};
 
-module.exports = (req, res) => {
-	req.pathname = req.pathname || url.parse(req.url).pathname;
+module.exports.addPost = (req, res) => {
+	let category = req.body;
+	console.log(req);
+	
+	Category.create(category).then(() => {
+		res.redirect('/');
+	});
+};
 
-	if (req.pathname === '/category/add' && req.method === 'GET') {
-		fs.readFile('./views/category/add.html', (err, data) => {
-			if (err) {
-				console.log(err);
-				res.writeHead(404, {
-					'Content-Type': 'text/plain'
-				});
-				res.write('404 not found!');
-				res.end();
+module.exports.productByCategory = (req, res)=>{
+	let categoryName = req.params.category;
+
+	Category.findOne({name:categoryName})
+		.populate('products')
+		.then((category)=>{
+			if(!category){
+				res.sendStatus(400);
 				return;
 			}
-			res.writeHead(200, {
-				'Content-Type': 'text/html'
-			});
+			console.log(category);
+			
 
-			res.write(data);
-			res.end();
+			res.render('category/products',{category:category});
 		});
-	} else if (req.pathname === '/category/add' && req.method === 'POST') {
-		let queryData = '';
-		req.on('data', (data) => {
-			queryData += data;
-		});
-
-		req.on('end', () => {
-			let category = qs.parse(queryData);
-
-			Category.create(category).then(() => {
-				res.writeHead(302, {
-					Location: '/'
-				});
-
-				res.end();
-			}).catch((err) => {
-				console.log(err);
-				res.end();
-			});
-		});
-	} else {
-		return true;
-	}
-}
+};

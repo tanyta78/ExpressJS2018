@@ -1,10 +1,11 @@
 const url = require('url');
-const database = require('../config/database');
 const fs = require('fs');
 const path = require('path');
 const qs = require('querystring');
 const multiparty = require('multiparty');
 const shortid = require('shortid');
+const Product = require('../models/Product');
+const Category = require('../models/Category');
 
 module.exports = (req, res) => {
 	req.pathname = req.pathname || url.parse(req.url).pathname;
@@ -22,12 +23,26 @@ module.exports = (req, res) => {
 				res.end();
 				return;
 			}
-			res.writeHead(200, {
-				'Content-Type': 'text/html'
-			});
 
-			res.write(data);
-			res.end();
+			Category.find().then((categories) => {
+				let replacement = '<select class="input-field" name="category">';
+
+				for (let category of categories) {
+					replacement+=`<option value="${category._id}">${category.name}</option>`;
+				}
+
+				replacement+='</select>';
+
+				let html = data.toString().replace('{categories}', replacement);
+
+				res.writeHead(200, {
+					'Content-Type': 'text/html'
+				});
+	
+				res.write(html);
+				res.end();
+
+			});			
 		});
 	} else if (req.pathname === '/product/add' && req.method === 'POST') {
 		let form = new multiparty.Form();
@@ -47,7 +62,7 @@ module.exports = (req, res) => {
 					let fileName = shortid.generate();
 					let filePath = path.normalize(path.join(__dirname, `../content/images/${fileName}`));
 
-					product.image = filePath;
+					product.image = `../content/images/${fileName}`;
 
 					fs.writeFile(filePath, dataString, { encoding: 'ascii' }, (err) => {
 						if (err) {
@@ -70,13 +85,17 @@ module.exports = (req, res) => {
 		});
 
 		form.on('close', () => {
-			database.products.add(product);
-
-			res.writeHead(302, {
-				Location: '/'
+			Product.create(product).then((insertedProduct) => {
+				Category.findById(product.category).then(category=>{
+					category.products.push(insertedProduct._id);
+					category.save();
+					res.writeHead(302, {
+						Location: '/'
+					});
+	
+					res.end();
+				});	
 			});
-
-			res.end();
 		});
 
 		form.parse(req);

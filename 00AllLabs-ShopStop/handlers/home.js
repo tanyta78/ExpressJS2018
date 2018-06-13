@@ -1,8 +1,8 @@
 const url = require('url');
 const fs = require('fs');
 const path = require('path');
-const database = require('../config/database');
 const qs = require('querystring');
+const Product = require('../models/Product');
 
 /**
  * 
@@ -27,33 +27,34 @@ module.exports=(req, res)=>{
 				return;
 			}
 
-			let quertData = qs.parse(url.parse(req.url).query);
+			let queryData = qs.parse(url.parse(req.url).query);
 
-			let products = database.products.getAll();
-
-			if(quertData.querty){
-				let criteriaString =quertData.querty;
-				products=products.filter(p=>{return p.name.toLowerCase().indexOf(criteriaString)!==-1;});
-			}
-
-			let content = '';
-
-			for (const product of products) {
-				content+=`
-				<div class="product-card">
-					<img class="product-img" src="${product.image}">
-					<h2>${product.name}</h2>
-					<p>${product.description}</p>
-				</div>`;
-			}
-			let html = data.toString().replace('{content}',content);
-
-			res.writeHead(200, {
-				'Content-Type': 'text/html'
+			Product.find().then((products)=>{
+				if(queryData.querty){
+					products=products.filter(p=>p.name.toLowerCase().includes(queryData.querty));
+				}
+	
+				let content = '';
+	
+				for (const product of products) {
+					content+=`
+					<div class="product-card">
+						<img class="product-img" src="${product.image}">
+						<h2>${product.name}</h2>
+						<p>${product.description}</p>
+					</div>`;
+				}
+				let html = data.toString().replace('{content}',content);
+	
+				res.writeHead(200, {
+					'Content-Type': 'text/html'
+				});
+			
+				res.write(html);
+				res.end();
 			});
-		
-			res.write(html);
-			res.end();
+
+			
 		});
 	}else{
 		return true;

@@ -1,0 +1,26 @@
+<div class="container">
+    <form action="/editCar/{{id}}" method="POST">
+        <fieldset>
+            <legend>Edit car</legend>
+            <label for="carBrand">Brand</label>
+            <input type="text" id="carBrand" name="carBrand" placeholder="The brand of the car" value={{carBrand}}>
+
+            <label for="carModel">Model</label>
+            <input type="text" id="carModel" name="carModel" placeholder="The model of the car" value={{carModel}}>
+
+            <label for="carYear">Year of manifacture</label>
+            <input type="text" id="carYear" name="carYear" placeholder="Year of manifacture" value={{carYear}}>
+
+            <label for="carPoster">Poster URL</label>
+            <input type="text" id="carPoster" name="carPoster" placeholder="Link to a poster" value={{carPoster}}>
+
+            <label for="description">Description</label>
+            <input type="text" id="description" name="description" placeholder="Short description" value={{description}}>
+
+            <label for="price">Price for day</label>
+            <input type="text" id="price" name="price" placeholder="Price for day" value={{price}}>
+
+            <input type="submit" value="Save changes">
+        </fieldset>
+    </form>
+</div>

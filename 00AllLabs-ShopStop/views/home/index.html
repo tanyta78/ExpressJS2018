@@ -6,11 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>ShopStop</title>
-  <!--
-   TODO: Link favicon.
-   TODO: Link css. -->
-   <link rel='shortcut icon' type='image/x-icon' href='/content/images/favicon.ico' />
-   <link rel="stylesheet" type="text/css" href="/content/styles/site.css">
+  <link rel="stylesheet" type="text/css" href="/content/styles/site.css">
+  <link rel="icon" href="/content/images/favicon.ico" type="image/x-icon" />
 </head>
 <body>
   <header>
@@ -23,6 +20,10 @@
   </header>
   <main>
     <h1 class="head-title">Welcome to ShopStop!</h1>
+    <form id="search-form">
+      <input type="text" name="querty" placeholder="Search...">
+      <input type="submit" value="Search">
+    </form>
     <div class="cards">
       {content}
     </div>

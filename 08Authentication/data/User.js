@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const encryption = require('../utils/encrypting');
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const userSchema = new mongoose.Schema({
 	username: { type: mongoose.Schema.Types.String, required: true, unique: true },
@@ -7,7 +8,9 @@ const userSchema = new mongoose.Schema({
 	firstName: { type: mongoose.Schema.Types.String },
 	lastName: { type: mongoose.Schema.Types.String },
 	salt: { type: mongoose.Schema.Types.String, required: true },
-	roles: [{ type: mongoose.Schema.Types.String }]
+    roles: [{ type: mongoose.Schema.Types.String }],
+    isAdmin:{type:Boolean, default:false}
+    
 });
 
 userSchema.method({
@@ -18,20 +21,21 @@ userSchema.method({
 
 const User = mongoose.model('User', userSchema);
 
-User.seedAdminUser = () => {
-	User.find({}).then(users => {
-		if (users.length > 0) return;
-		const salt = encryption.generateSalt();
-		const hashedPass = encryption.generateHashedPassword(salt, 'Admin');
-		User.create({
-			username: 'Admin',
-			salt,
-			hashedPass,
-			roles: ['Admin']
-		});
-	}).catch(e => {
-		console.log(e);
-	});
+User.seedAdminUser = async () => {
+    try {
+        let users = await User.find();
+        if (users.length > 0) return;
+        const salt = encryption.generateSalt();
+        const hashedPass = encryption.generateHashedPassword(salt, 'Admin');
+        return User.create({
+            username: 'Admin',
+            salt,
+            hashedPass,
+            roles: ['Admin'],
+            isAdmin:true
+        });
+    } catch (e) {
+        console.log(e);
+    }
 };
-
 module.exports = User;

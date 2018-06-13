@@ -1,0 +1,45 @@
+<h1> Search results</h1>
+<div class="container">
+    <div class="history">
+        <table>
+            <caption>
+                Detail car info
+            </caption>
+            <tr>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Year of manifacture</th>
+                <th>Price per day in lv</th>
+                <th>Get details</th>
+                {{#if currentUser}} {{#if currentUser.isAdmin}}
+                <th>Edit car</th>
+                {{/if}} {{/if}}
+            </tr>
+            {{#each result}}
+            <tr>
+                <td>{{carBrand}}</td>
+                <td>{{carModel}}</td>
+                <td>{{carYear}}</td>
+                <td>{{price}}</td>
+                <td>
+                    <a href="/getDetails/{{id}}"> Get details</a>
+                </td>
+               
+                <td>
+                    <a href="/editCar/{{id}}"> Edit this car</a>
+                </td>
+               
+            </tr>
+            {{else}}
+            <tr>
+                <td colspan="7">No cars in database for searched criteria!</td>
+            </tr>
+            {{/each}}
+        </table>
+    </div>
+</div>
+
+
+{{!-- //TO DO pagination for search results --}} {{!--
+<a href="search?page={{page.prevPage}}">Previuos</a>
+<a href="search?page={{page.nextPage}}" class={{page.style}}>Next</a> --}}

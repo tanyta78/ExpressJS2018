@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
-const User = require('../models/User');
+const User = require('../data/User');
+const Car = require('../data/Car');
+const RentalInfo = require('../data/RentalInfo');
 
 module.exports = (settings)=>{
 	mongoose.connect(
-		settings.db,{ useMongoClient:true},err=>{
+		settings.db,err=>{
 			if(err){
 				console.log(err);
 				return;

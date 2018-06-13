@@ -1,0 +1,21 @@
+{
+  "name": "Excrcise3NodeMemeEmpty",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "index.js"
+  },
+  "keywords": [],
+  "author": "PL",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "1.18.3",
+    "eslint": "^4.19.1",
+    "express": "4.16.3",
+    "express-fileupload": "0.4.0",
+    "formidable": "^1.1.1",
+    "mongoose": "5.1.4",
+    "shortid": "^2.2.8"
+  }
+}

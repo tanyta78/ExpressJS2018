@@ -1,0 +1,19 @@
+<h1> Choose your car!!!</h1>
+<div class="container">
+    {{#each cars}}
+    <div class="car">
+        <a href="/cars/getDetails/{{id}}">
+            <img class="carPoster" src="{{carPoster}}" />		
+        </a>
+        <div>Year of manifacture {{carYear}} </div>
+		<div>Price {{price}} lv.</div>
+    </div>
+    {{else}}
+    <div>No cars in database!</div>
+    {{/each}} 
+    {{!--
+    <a href="#">
+        <img class="bookPoster" src="/public/images/{{shortid}}.png" />
+    </a> --}}
+
+</div>

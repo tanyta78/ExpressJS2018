@@ -1,0 +1,27 @@
+<h2>Search for desired car !</h2>
+ <form action="/search" >
+        <fieldset>
+            <legend>Search:</legend>
+			<label for="carBrand">Brand</label>
+            <input type="text" id="carBrand" name="carBrand" placeholder="The brand of the car" value={{carBrand}}>
+            <label for="carModel">Model</label>
+            <input type="text" id="carModel" name="carModel" placeholder="The model of the car" value={{carModel}}>
+
+            <label for="carYear">Year of manifacture</label>
+            <input type="text" id="carYear" name="carYear" placeholder="Year of manifacture" value={{carYear}}>
+
+            <label for="minPrice">Min Price for day</label>
+            <input type="text" id="minPrice" name="minPrice" placeholder="Min Price for day" value={{minPrice}}>
+			<label for="maxPrice">Max Price for day</label>
+            <input type="text" id="maxPrice" name="maxPrice" placeholder="Max Price for day" value={{maxPrice}}>
+			{{#if currentUser}} 
+					{{#if currentUser.isAdmin}}
+			<label for="carId">CarId</label>
+            <input type="text" id="carId" name="carId" placeholder="carId" value={{carId}}>
+			<input type="checkbox" name="rented" value="false">Rented<br>
+					{{/if}}
+			{{/if}}
+
+            <input type="submit" value="Search">
+        </fieldset>
+    </form>

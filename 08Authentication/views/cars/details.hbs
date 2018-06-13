@@ -1,0 +1,49 @@
+<div class="content">
+	<img src="{{carPoster}}" alt="carImage" height="300" />
+	<table>
+		<caption>
+			Detail car info
+		</caption>
+		<tr>
+			<th>Brand</th>
+			<td>{{carBrand}}</td>
+		</tr>
+		<tr>
+			<th>Model</th>
+			<td>{{carModel}}</td>
+		</tr>
+		<tr>
+			<th>Year of manifacture</th>
+			<td>{{carYear}}</td>
+		</tr>
+		<tr>
+			<th>Description</th>
+			<td>{{description}}</td>
+		</tr>
+		<tr>
+			<th>Price per day in lv</th>
+			<td>{{price}}</td>
+		</tr>
+	</table>
+	{{#if currentUser}} 
+		{{#if currentUser.isAdmin}}
+	<form action="/editCar/{{_id}}" >
+		<input type="submit" value="Edit this car">
+	</form>
+		{{/if}} 
+	{{/if}} 
+	{{#if rented}}
+	<h3>This car is already rented</h3>
+	{{else}}
+	<form action="/rentACar/{{id}}" method="post">
+		<fieldset>
+			<legend>Rent this car</legend>
+			<label for="rentalDate">Start Rental Date</label>
+			<input type="date" id="rentalDate" name="rentalDate">
+			<label for="days">Days</label>
+			<input type="number" id="days" name="days" min="1" max="30" value="1">
+		</fieldset>
+		<input type="submit" value="Rent this car">
+	</form>
+	{{/if}}
+</div>

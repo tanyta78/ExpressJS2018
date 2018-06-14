@@ -9,5 +9,6 @@ let env = process.env.NODE_ENV || 'development';
 database(config[env]);
 require('./config/express')(app,config[env]);
 require('./config/routes')(app);
+require('./config/passport')();
 
 app.listen(port);

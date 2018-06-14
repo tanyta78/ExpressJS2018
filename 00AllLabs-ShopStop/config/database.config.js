@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+mongoose.Promise=global.Promise;
 
 module.exports = (config)=>{
 	mongoose.connect(config.connectionString);
@@ -19,6 +20,7 @@ module.exports = (config)=>{
 		return;
 	});
 
+	require('../models/User').seedAdminUser();
 	require('../models/Product');
 	require('../models/Category');
 };

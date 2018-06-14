@@ -3,6 +3,8 @@ const Product = require('../models/Product');
 module.exports.index = (req, res) => {
 	let queryData = req.query;
 
+
+	// to show product withoth buyers!!! use {buyer:undefined}
 	Product.find().populate('category').then((products) => {
 		if (queryData.query) {
 			products = products.filter(p => p.name.toLowerCase().includes(queryData.query));

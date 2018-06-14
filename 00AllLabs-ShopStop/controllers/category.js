@@ -6,7 +6,7 @@ module.exports.addGet = (req, res) => {
 
 module.exports.addPost = (req, res) => {
 	let category = req.body;
-	console.log(req);
+	category.creator = req.user._id;
 	
 	Category.create(category).then(() => {
 		res.redirect('/');

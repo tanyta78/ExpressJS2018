@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Doner Place</title>
+	<link href="/css/site.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="container">
+		<header>
+			<span class="logo">Doner Place</span>
+			{{#if currentUser}}
+			<span class="greeting">Welcome, {{currentUser.firstName}} {{currentUser.lastName}}! |
+				<form id="logout-form" action="/user/logout" method="POST"></form>
+							<a href="javascript:document.getElementById('logout-form').submit()">Logout</a>
+			</span>
+			{{/if}}
+			<ul class="menu">
+				<li>
+					<a class="button" href="/">Home</a>
+				</li>
+					{{#if currentUser}}
+				<li>
+					<a class="button" href="/order">Order Status</a>
+				</li>
+				{{else}}
+				<li>
+					<a class="button" href="/user/login">Login</a>
+				</li>
+				<li>
+					<a class="button" href="/user/register">Register</a>
+				</li>
+				{{/if}}
+			</ul>
+		</header>
+		<main>
+				{{#if globalError}}
+		<div class="errBox">
+			<h3 class="errMsg">{{globalError}}</h3>
+		</div>
+		{{/if}} 
+		{{#if msg.success}}
+		<div class="successBox">
+			<h3 class="successMsg">{{msg.success}}</h3>
+		</div>
+		{{/if}} 
+			{{{body}}}
+		</main>
+		<footer>Doner Place &copy; 2017</footer>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<table class="history">
+	<caption>
+		Rental History
+	</caption>
+	<tr>
+		<th>Brand</th>
+		<th>Model</th>
+		<th>Start date</th>
+		<th>Days rented</th>
+		<th>Money paid</th>
+	</tr>
+	{{#each rentals}}
+	<tr>
+		<td>{{car.carBrand}}</td>
+		<td>{{car.carModel}}</td>
+		<td>{{rentalDate}}</td>
+		<td>{{days}}</td>
+		<td>{{moneyPaid}}</td>
+	</tr>
+	{{else}}
+	<tr>
+		<td colspan="5">
+			No rented cars
+		</td>
+	</tr>
+	{{/each}}
+
+</table>

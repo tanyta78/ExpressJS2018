@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>My Exam</title>
+	<link href="/styles/site.css" type="text/css" rel="stylesheet" />
+	<link rel="icon" href="/favicon.ico?" />
+</head>
+
+<body>
+	<div class="container">
+		<header>
+			<div class="inner">
+				<nav class="topnav">
+					<a href="/" class="logo">
+						<img class="logo" src="/images/logo.jpg" alt="Logo">
+					</a>
+					{{!-- <input type="checkbox" id="nav" /> --}}
+					<label for="nav"></label>
+					<ul class="menu">
+						<li>
+							<a href="/viewAll?page=0">All cars</a>
+						</li>
+						{{#if currentUser}} 
+							{{#if currentUser.isAdmin}}
+							<li>
+								<a href="/addCar">Add car</a>
+							</li>
+							{{/if}}
+						<li>{{currentUser.username}}</li>
+						<li>
+							<form id="logout-form" action="/user/logout" method="POST"></form>
+							<a href="javascript:document.getElementById('logout-form').submit()">Logout</a>
+						</li>
+						<li>
+							<a href="/user/{{currentUser.id}}">Rental history</a>
+						</li>
+						{{else}}
+						<li>
+							<a href="/user/register">Register</a>
+						</li>
+						<li>
+							<a href="/user/login">Login</a>
+						</li>
+						{{/if}}
+					</ul>
+				</nav>
+			</div>
+
+		</header>
+		{{#if globalError}}
+		<div class="errBox">
+			<h3 class="errMsg">{{globalError}}</h3>
+		</div>
+		{{/if}} 
+		{{#if success}}
+		<div class="successBox">
+			<h3 class="successMsg">{{success}}</h3>
+		</div>
+		{{/if}} 
+		{{{body}}}
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+<h2>{{title}}
+	{{#if currentUser}}
+	<div class="controls">
+		{{#if isLocked}}
+			{{#if currentUser.isAdmin}}
+	<a href="/article/edit/{{id}}">[edit]</a>
+	{{/if}}
+		{{else}}
+		<a href="/article/edit/{{id}}">[edit]</a>
+		{{/if}}
+		<a href="/article/history/{{id}}">[history]</a>
+	</div>
+	{{/if}}
+</h2>
+<article>
+	
+		<p>{{recentEdit.content}}</p>
+
+</article>
